@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://eewlqssj1r05"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyTest.gd" id="1_23jce"]
+[ext_resource type="Texture2D" uid="uid://dm1fbnrsci66y" path="res://Assets/Tests/tile.png" id="2_7g7o5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77fdf"]
+size = Vector2(16, 16)
+
+[node name="EnemyTest" type="Area2D"]
+script = ExtResource("1_23jce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7g7o5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_77fdf")

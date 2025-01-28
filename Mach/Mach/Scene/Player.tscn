@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://botu8sky3x6u6"]
+
+[ext_resource type="Script" path="res://Scripts/playermain.gd" id="1_kg0m7"]
+[ext_resource type="PackedScene" uid="uid://chtcykuenevy0" path="res://Scene/HP.tscn" id="4_bqwot"]
+[ext_resource type="Texture2D" uid="uid://cjfutrjes5tcf" path="res://Assets/Player/walk_lr.png" id="4_di0sq"]
+[ext_resource type="Texture2D" uid="uid://bvdxtaxw6anup" path="res://Assets/Player/idle.png" id="5_yuqdc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ayq"]
+atlas = ExtResource("4_di0sq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekfgg"]
+atlas = ExtResource("4_di0sq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx44w"]
+atlas = ExtResource("4_di0sq")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qjgn"]
+atlas = ExtResource("4_di0sq")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6yio"]
+atlas = ExtResource("5_yuqdc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k80t1"]
+atlas = ExtResource("5_yuqdc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcotj"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_r8ayq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ekfgg")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_qx44w")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_0qjgn")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6yio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k80t1")
+}],
+"loop": true,
+"name": &"Stand",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_keyva"]
+size = Vector2(20, 16)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 5
+script = ExtResource("1_kg0m7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bcotj")
+animation = &"Move"
+autoplay = "Stand"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_keyva")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Healthbar" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Healthbar"]
+offset_top = -1.0
+offset_right = 286.0
+offset_bottom = 160.0
+
+[node name="heart" type="TextureRect" parent="Healthbar/HBoxContainer"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" parent="Healthbar/HBoxContainer/heart" instance=ExtResource("4_bqwot")]
+position = Vector2(13, 20)
+scale = Vector2(2.5625, 2.4375)
+animation = &"Full"
+
+[node name="heart2" type="TextureRect" parent="Healthbar/HBoxContainer"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" parent="Healthbar/HBoxContainer/heart2" instance=ExtResource("4_bqwot")]
+position = Vector2(13, 20)
+scale = Vector2(2.5625, 2.4375)
+animation = &"Full"
+
+[node name="heart3" type="TextureRect" parent="Healthbar/HBoxContainer"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" parent="Healthbar/HBoxContainer/heart3" instance=ExtResource("4_bqwot")]
+position = Vector2(13, 20)
+scale = Vector2(2.5625, 2.4375)
+animation = &"Full"

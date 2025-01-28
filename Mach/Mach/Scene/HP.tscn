@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://chtcykuenevy0"]
+
+[ext_resource type="Texture2D" uid="uid://shc8i4yy0hmp" path="res://Assets/Player/Hp/empty.png" id="1_cdx6f"]
+[ext_resource type="Texture2D" uid="uid://ca73w4ld1kp01" path="res://Assets/Player/Hp/full.png" id="2_ckmly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p57ks"]
+atlas = ExtResource("1_cdx6f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc60j"]
+atlas = ExtResource("2_ckmly")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtcxy"]
+atlas = ExtResource("2_ckmly")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjn4n"]
+atlas = ExtResource("2_ckmly")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubvds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p57ks")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc60j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtcxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjn4n")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ubvds")
+animation = &"Empty"
+autoplay = "Full"
